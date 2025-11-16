@@ -1,0 +1,13 @@
+{
+  "name": "empleados-app",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de empleados",
+  "scripts": {
+    "start": "php -S 0.0.0.0:8000",
+    "build": "chmod +x build.sh && ./build.sh"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": "22.x"
+  }
+}
