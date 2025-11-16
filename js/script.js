@@ -1,4 +1,4 @@
-const API_BASE = '/api/empleados.php';
+const API_BASE = '/api/empleados';  
 
 class EmpleadoManager {
     constructor() {
@@ -75,7 +75,7 @@ class EmpleadoManager {
         try {
             let response;
             if (this.isEditing) {
-                response = await fetch(`${API_BASE}?id=${this.currentEditId}`, {
+                response = await fetch(`${API_BASE}/${this.currentEditId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ class EmpleadoManager {
 
     async editEmpleado(id) {
         try {
-            const response = await fetch(`${API_BASE}?id=${id}`);
+            const response = await fetch(`${API_BASE}/${id}`);
             const empleado = await response.json();
 
             if (empleado.error) {
@@ -129,7 +129,6 @@ class EmpleadoManager {
             document.getElementById('submit-btn').textContent = 'Actualizar Empleado';
             document.getElementById('cancel-btn').style.display = 'inline-block';
 
-            // Scroll to form
             document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
         } catch (error) {
             this.showError('Error al cargar el empleado');
@@ -143,7 +142,7 @@ class EmpleadoManager {
         }
 
         try {
-            const response = await fetch(`${API_BASE}?id=${id}`, {
+            const response = await fetch(`${API_BASE}/${id}`, {
                 method: 'DELETE'
             });
 
